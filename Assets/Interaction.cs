@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class Interaction : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+[RequireComponent(typeof(Button))]
+public abstract class Interaction : MonoBehaviour
+{
+    Button button;
+    protected virtual void Start()
     {
-        
+        button = gameObject.GetComponent<Button>();
+        button.onClick.AddListener(() => { Action(); });
     }
+    protected abstract void Action();
 }

@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
 {
-    private static T instance;
+    public bool isNotSingle;
+    public static T instance;
     public static T Instance
     {
         get
@@ -27,9 +28,24 @@ public class Singleton<T> : MonoBehaviour where T : MonoBehaviour
             }
             return instance;
         }
+        set
+        {
+
+        }
     }
     protected virtual void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        if (!isNotSingle)
+        {
+            T[] objects = FindObjectsOfType<T>();
+            foreach (T obj in objects)
+            {
+                if (obj.gameObject != this.gameObject)
+                {
+                    Destroy(this.gameObject);
+                }
+            }
+        }
     }
 }

@@ -16,10 +16,6 @@ public class SoundManager : Singleton<SoundManager>
 
     float SEvolume = 1;
     protected SoundManager() { }
-    private void Start()
-    {
-        //clips.Sort();
-    }
 
     public void Playbgm(string name)
     //사용법 Sound.Instance.ChangeClip("이름",루프 할껀지안할껀지(bool))

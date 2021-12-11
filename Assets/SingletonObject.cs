@@ -4,4 +4,9 @@ using UnityEngine;
 
 public class SingletonObject : Singleton<SingletonObject>
 {
+    protected override void Awake()
+    {
+        isNotSingle = true;
+        base.Awake();
+    }
 }

@@ -5,17 +5,20 @@ using UnityEngine;
 public enum EntityState
 {
     MOVING,
-    ONDAMAGE,
+    HIT,
     ATTACK,
-    DIE
+    DIE,
 }
+
+
 
 public abstract class Entity : MonoBehaviour
 {
     public float Damage;
     public float MaxHp;
     public float Speed;
-    [SerializeField] private float hp;
+    [SerializeField]
+    private float hp;
     public float _hp
     {
         get { return hp; }
@@ -33,7 +36,7 @@ public abstract class Entity : MonoBehaviour
                 hp = 0;
                 return;
             }
-            if (entityState == EntityState.ONDAMAGE)
+            if (entityState == EntityState.HIT)
             {
                 return;
             }
@@ -52,17 +55,14 @@ public abstract class Entity : MonoBehaviour
     protected abstract void Hit();
     //protected abstract void Attack();
 
-    protected virtual void Start()
+    protected virtual void Awake()
     {
         hp = MaxHp;
     }
-    protected virtual void Update()
-    {
 
-    }
     protected virtual IEnumerator Onhit()
     {
-        entityState = EntityState.ONDAMAGE;
+        entityState = EntityState.HIT;
         yield return new WaitForSeconds(0.5f);
         entityState = EntityState.MOVING;
     }

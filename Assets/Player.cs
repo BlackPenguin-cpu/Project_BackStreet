@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    [SerializeField] float Maxhp;
-    [SerializeField] float Speed;
+    public float Maxhp;
+    public float Speed;
+    public float JumpPower;
     [SerializeField] private float Hp;
 
     Rigidbody2D rigid;
@@ -35,18 +36,18 @@ public class Player : MonoBehaviour
 
     private void Move()
     {
-        if (Input.GetKey(KeyCode.A))
-        {
-            rigid.AddForce(new Vector3(1 * Speed, 0, 0), ForceMode2D.Impulse);
-        }
         if (Input.GetKey(KeyCode.D))
         {
-            rigid.AddForce(new Vector3(-1 * Speed, 0, 0), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector3(Speed * Time.deltaTime, 0, 0), ForceMode2D.Impulse);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            rigid.AddForce(new Vector3(-Speed * Time.deltaTime, 0, 0), ForceMode2D.Impulse);
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
             //이따 수정해주셈
-            rigid.AddForce(new Vector3(0, 10, 0), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector3(0, JumpPower, 0), ForceMode2D.Impulse);
         }
     }
 }

@@ -21,6 +21,7 @@ public abstract class Enemy : Entity
     {
         if (AttackDelay > AttackSpeed)
         {
+            AttackDelay = 0;
             Attack();
         }
 

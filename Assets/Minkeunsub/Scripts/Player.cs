@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+public enum PlayerAnimationState
+{
+    Idle,
+    Move,
+    Jump,
+    Attack,
+
+}
+
 public class Player : MonoBehaviour
 {
     public float Maxhp;
@@ -10,6 +19,8 @@ public class Player : MonoBehaviour
     [SerializeField] private float Hp;
 
     Rigidbody2D rigid;
+    Animator anim;
+
     public float _hp
     {
         get { return Hp; }
@@ -28,6 +39,7 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {

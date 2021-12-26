@@ -1,12 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+public enum PlayerAnimationState
+{
+    Idle,
+    Move,
+    Jump,
+    Attack,
+
+}
 
 public class Player : MonoBehaviour
 {
     public float Maxhp;
     public float Speed;
     public float JumpPower;
+    public bool movable = true;
+    public Npc npc;
+    Animator anim;
     [SerializeField] private float Hp;
 
     Rigidbody2D rigid;
@@ -28,10 +39,14 @@ public class Player : MonoBehaviour
     private void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        anim = GetComponent<Animator>();
     }
     private void Update()
     {
-        Move();
+        if (movable)
+        {
+            Move();
+        }
     }
 
     private void Move()
@@ -48,6 +63,10 @@ public class Player : MonoBehaviour
         {
             //이따 수정해주셈
             rigid.AddForce(new Vector3(0, JumpPower, 0), ForceMode2D.Impulse);
+        }
+        if (Input.GetKey(KeyCode.F))
+        {
+            npc.Action();
         }
     }
 }

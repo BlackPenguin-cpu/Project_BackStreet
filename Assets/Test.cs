@@ -2,16 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-public class Test : Interaction
+using TMPro;
+public class Test : MonoBehaviour
 {
-    protected override void Action()
+    public GameObject obj;
+    public TextMeshPro tmpro;
+    void Update()
     {
-        SceneManager.LoadScene("TestScene");
+        this.gameObject.GetComponent<SpriteRenderer>().size = new Vector2(this.gameObject.GetComponent<SpriteRenderer>().size.x, tmpro.preferredHeight + 0.2f);
+        this.gameObject.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + tmpro.preferredHeight/2);
+        tmpro.transform.position = new Vector3(obj.transform.position.x, obj.transform.position.y + tmpro.preferredHeight / 2);
     }
-    protected override void Start()
-    {
-        base.Start();
-
-    }
-
 }

@@ -10,14 +10,6 @@ public enum PlayerAnimationState
 
 }
 
-public enum PlayerAnimationState
-{
-    Idle,
-    Move,
-    Jump,
-    Attack,
-
-}
 
 public class Player : MonoBehaviour
 {
@@ -30,7 +22,6 @@ public class Player : MonoBehaviour
     [SerializeField] private float Hp;
 
     Rigidbody2D rigid;
-    Animator anim;
 
     public float _hp
     {

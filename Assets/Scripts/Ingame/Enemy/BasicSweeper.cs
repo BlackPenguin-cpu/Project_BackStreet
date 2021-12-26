@@ -39,6 +39,7 @@ public class BasicSweeper : Enemy
             case EntityState.DIE:
                 break;
             case EntityState.JUMP:
+                Move();
                 break;
             default:
                 break;
@@ -87,11 +88,11 @@ public class BasicSweeper : Enemy
         entityState = EntityState.JUMP;
         if (direction == Direction.RIGHT)
         {
-            rigid.AddForce(new Vector3(Speed, JumpPower, 0), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector3(Speed / 3, JumpPower, 0), ForceMode2D.Impulse);
         }
         else if (direction == Direction.LEFT)
         {
-            rigid.AddForce(new Vector3(-Speed, JumpPower, 0), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector3(-Speed / 3, JumpPower, 0), ForceMode2D.Impulse);
 
         }
     }

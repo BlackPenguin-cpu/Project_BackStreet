@@ -10,15 +10,6 @@ public enum PlayerAnimationState
 
 }
 
-public enum PlayerAnimationState
-{
-    Idle,
-    Move,
-    Jump,
-    Attack,
-
-}
-
 public class Player : MonoBehaviour
 {
     public float Maxhp;
@@ -26,7 +17,6 @@ public class Player : MonoBehaviour
     public float JumpPower;
     public bool movable = true;
     public Npc npc;
-    Animator anim;
     [SerializeField] private float Hp;
 
     Rigidbody2D rigid;

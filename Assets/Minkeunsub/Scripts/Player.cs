@@ -18,7 +18,6 @@ public class Player : MonoBehaviour
     public float JumpPower;
     public bool movable = true;
     public Npc npc;
-    Animator anim;
     [SerializeField] private float Hp;
 
     Rigidbody2D rigid;
@@ -63,7 +62,7 @@ public class Player : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            //ÀÌµû ¼öÁ¤ÇØÁÖ¼À
+            //ï¿½Ìµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½
             rigid.AddForce(new Vector3(0, JumpPower, 0), ForceMode2D.Impulse);
         }
         if (Input.GetKey(KeyCode.F))
